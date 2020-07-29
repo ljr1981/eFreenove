@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-20-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-20-0 http://www.eiffel.com/developers/xml/configuration-1-20-0.xsd" name="efreenove" uuid="82DE3555-4002-4E37-8E4B-13F30589A7AC">
+	<target name="efreenove">
+		<description>A collection of test projects for the Freenove breadboard kit.</description>
+		<root all_classes="true"/>
+		<file_rule>
+			<description>From primary target eFreenove</description>
+			<exclude>/CVS$</exclude>
+			<exclude>/EIFGENs$</exclude>
+			<exclude>/\.git$</exclude>
+			<exclude>/\.svn$</exclude>
+		</file_rule>
+		<option warning="true" manifest_array_type="mismatch_warning">
+			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
+		</option>
+		<setting name="console_application" value="true"/>
+		<setting name="dead_code_removal" value="feature"/>
+		<capability>
+			<concurrency use="scoop"/>
+			<void_safety use="all"/>
+		</capability>
+		<external_include location="/usr/include">
+			<description>User include folder - wiringPi headers will be co-located here with all others after installation of Freenove</description>
+		</external_include>
+		<external_cflag value="-lwiringPi">
+			<description>Required flag for gcc. The -l option tells gcc to link in the specified library. </description>
+		</external_cflag>
+		<precompile name="base-scoop-safe" location="\home\larry\.es\eiffel_user_files\19.05\precomp\spec\linux-armv7\base-scoop-safe.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="diff" location="$ISE_LIBRARY\library\diff\diff.ecf"/>
+		<library name="testing" location="$ISE_LIBRARY\library\testing\testing.ecf"/>
+		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
+		<cluster name="efreenove" location=".\" recursive="true"/>
+	</target>
+	<target name="led_blink" extends="efreenove">
+		<description>Chapter 1 - LED Blink - Make an LED blink on the breadboard.</description>
+		<root class="APP_LED_BLINK" feature="make"/>
+		<setting name="executable_name" value="led_blink"/>
+	</target>
+	<target name="button_led" extends="efreenove">
+		<description>Chapter 2 - Button &amp; LED - control the LED state through a button.</description>
+		<root class="APP_BUTTON_LED" feature="make"/>
+		<setting name="executable_name" value="button_led"/>
+	</target>
+	<target name="test" extends="efreenove">
+		<description>Testing </description>
+		<file_rule>
+			<include>/tests$</include>
+		</file_rule>
+		<file_rule>
+			<exclude>/CVS$</exclude>
+			<exclude>/EIFGENs$</exclude>
+			<exclude>/\.git$</exclude>
+			<exclude>/\.svn$</exclude>
+		</file_rule>
+		<file_rule>
+			<description>From primary target eFreenove</description>
+			<exclude>/CVS$</exclude>
+			<exclude>/EIFGENs$</exclude>
+			<exclude>/\.git$</exclude>
+			<exclude>/\.svn$</exclude>
+		</file_rule>
+	</target>
+</system>
