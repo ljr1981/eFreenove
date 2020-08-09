@@ -13,11 +13,6 @@ inherit
 
 feature -- Test routines
 
-	test_of_test
-		do
-			assert_32 ("True", True)
-		end
-
 	general_test
 			-- New test routine
 		note
@@ -28,6 +23,10 @@ feature -- Test routines
 		do
 			create l_app
 			assert_integers_equal ("blah", 0, l_app.led_pin_0_const)
+			l_app.dit_dah_queue.force ('.')
+			l_app.dit_dah_queue.force ('.')
+			l_app.dit_dah_queue.force ('.')
+			assert_characters_equal ("S", 'S', l_app.translate_dit_dah_queue_to_letter)
 		end
 
 note

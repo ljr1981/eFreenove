@@ -176,7 +176,7 @@ feature {NONE} -- Button + LED Coordination
 			Result := attached last_down and then attached last_up
 		end
 
-feature {NONE} -- Morse Code
+feature {TEST_SET_BRIDGE} -- Morse Code
 
 	-- https://morsecode.world/international/timing.html
 	-- dit = 1 unit

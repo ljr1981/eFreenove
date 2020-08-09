@@ -44,6 +44,7 @@
 	</target>
 	<target name="test" extends="efreenove">
 		<description>Testing </description>
+		<root class="ANY" feature="default_create"/>
 		<file_rule>
 			<include>/tests$</include>
 		</file_rule>
@@ -60,5 +61,10 @@
 			<exclude>/\.git$</exclude>
 			<exclude>/\.svn$</exclude>
 		</file_rule>
+	</target>
+	<target name="stepping_motor" extends="efreenove">
+		<description>Demonstration of a simple stepping motor</description>
+		<root class="APP_STEPPING_MOTOR" feature="make"/>
+		<setting name="executable_name" value="SteppingMotor"/>
 	</target>
 </system>
