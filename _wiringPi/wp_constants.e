@@ -41,6 +41,12 @@ feature -- // Pull up/down/none
 	PUD_DOWN_const: INTEGER = 1
 	PUD_UP_const: INTEGER = 2
 
+
+feature -- Constants
+
+	ms_to_ns_multiplier: INTEGER = 1_000_000
+			-- ns/ms = 1_000_000_000 / 1_000_000 = 1_000
+
 note
 	documentation: "[
 		These constants are based on several sources:
