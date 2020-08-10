@@ -223,7 +223,7 @@ note
 		
 		Such is the case here!
 		
-		Example the `make' feature below and compare it to the
+		Examine the `make' feature below and compare it to the
 		'main' feature of the StepperMotor.c file. The two look
 		deceptively similar, but they are not.
 		
