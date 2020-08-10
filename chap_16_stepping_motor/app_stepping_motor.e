@@ -211,6 +211,7 @@ feature {NONE} -- Implementation: Constants
 		end
 
 note
+	EIS: "name=see_also_wp_base", "src=https://github.com/ljr1981/eFreenove/blob/master/_wiringPi/wp_base.e"
 	design: "[
 		You will find this code appears to be much more complex
 		than the C in the SteppingMotor.c file. Why?
