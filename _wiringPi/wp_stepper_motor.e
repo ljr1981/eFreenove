@@ -160,28 +160,7 @@ feature -- Constants
 			-- Representation of `counter_clockwise' rotation vs. `clockwise'.
 
 	motor_pins: ARRAY [INTEGER]
-			--
-		note
-			design: "[
-				These are the pins on the GPIO IAW wiringPi pin-numbering.
-				A "four-phase". Each pin is connected to a stator-pair.
-				
-				IN1, IN2, IN3, IN4 represent A, B, C, D stator phases of the
-				ULN2003 Stepper.
-				]"
-			specifications: "[
-				28BYJ-48 Stepper Motor Technical Specifications
-				Rated Voltage: 5V DC
-				Number of Phases: 4
-				Stride Angle: 5.625°/64
-				Pull in torque: 300 gf.cm
-				Insulated Power: 600VAC/1mA/1s
-				Coil: Unipolar 5 lead coil
-				]"
-			EIS: "name=stator_motor_description", "src=https://www.galco.com/comp/prod/moto-ac.htm#:~:text=The%%20stator%%20then%%20is%%20the,on%%20the%%20AC%%20motor's%%20shaft."
-			EIS: "name=ULN2003_stepper", "src=https://components101.com/motors/28byj-48-stepper-motor"
-			EIS: "name=data_sheet", "src=https://components101.com/sites/default/files/component_datasheet/28byj48-step-motor-datasheet.pdf"
-			EIS: "name=pull_in_out_torque", "src=https://www.kollmorgen.com/en-us/developer-network/pull-and-pull-out-torque/"
+			-- Pins used to control motor in clockwise order.
 		deferred
 		end
 
