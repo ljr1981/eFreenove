@@ -5,7 +5,9 @@ note
 
 		The goal is to turn the stepper motor clockwise and then counter-clockwise.
 
-		Compare to ... in the C_code folder of Freenove.
+		Compare to /Code/C_Code/16.1.1_SteppingMotor/SteppingMotor.c in the C_code folder of Freenove.
+		
+		See desig notes at the bottom of this class.
 		]"
 
 class
@@ -24,21 +26,21 @@ feature {NONE} -- Initialization
 			-- Initialize Current.
 		do
 			print ("Program is starting ... %N")
-
 			prepare_pins
-
-			rotate (360) -- rotating 360° clockwise, a total of 2048 steps in a circle, namely, 512 cycles.
-			rotate (-360) -- rotating 360° counter-clockwise
-			rotate (90)
-			rotate (-45)
-			rotate (45)
-			rotate (-90)
+			rotate_motor_by_degrees (360) -- rotating 360° clockwise, a total of 2048 steps in a circle, namely, 512 cycles.
+			rotate_motor_by_degrees (-360) -- rotating 360° counter-clockwise
+			rotate_motor_by_degrees (90)
+			rotate_motor_by_degrees (-45)
+			rotate_motor_by_degrees (45)
+			rotate_motor_by_degrees (-90)
 		end
 
 feature {NONE} -- Implementation: Operations
 
-	rotate (a_degrees: INTEGER)
+	rotate_motor_by_degrees (a_degrees: INTEGER)
 			-- Rotate stator-motor `a_degrees' in `clockwise' or `counter_clockwise' direction.
+		require
+			valid_degrees: (-360 |..| 360).has (a_degrees)
 		do
 			print ("Rotating " + a_degrees.out + "%N")
 			move_steps (direction (a_degrees), minimum_ms_3, degrees_as_cycles (a_degrees.abs))
@@ -208,4 +210,126 @@ feature {NONE} -- Implementation: Constants
 			Result := <<0x08, 0x04, 0x02, 0x01>>
 		end
 
-;end
+note
+	design: "[
+		You will find this code appears to be much more complex
+		than the C in the SteppingMotor.c file. Why?
+		
+		Like any good Object-Oriented code, our goal is reuse.
+		To get to reusable code, we refactor. Factoring out
+		reusable code features generally results in more code,
+		not less. However, it also means that it takes less
+		code to accomplish a given job when viewed from the API.
+		
+		Such is the case here!
+		
+		Example the `make' feature below and compare it to the
+		'main' feature of the StepperMotor.c file. The two look
+		deceptively similar, but they are not.
+		
+		1. Where is the call to wiringPiSetup();
+		2. Where is the for-loop setting the pinMode?
+		3. Where is the while-loop that run endlessly?
+		
+		Let's handle these in turn.
+		
+		First--where is wiringPiSetup?
+		------------------------------
+		The actual call to wiringPiSetup can be found in the WP_BASE class.
+		Calling this feature is required before using any of the wiringPi
+		library features. The WP_BASE class, together with the WP_APP_HARNESS
+		class are design to ensure this call is made without any help from
+		the programmer (e.g. so YOU do not forget to make the call yourself).
+		
+		Each of the wrapped-C wiringPi features in Eiffel is given knowledge
+		of this requirement. Each feature requires the wiringPiSetup to
+		have been already called. Having this guarentee means your code
+		can inherit from the WP_APP_HARNESS with full assurance that the
+		setup task will always be handled without fail.
+		
+		Second--Where is the pinMode for-loop?
+		--------------------------------------
+		This setup of the pin modes for each motor pin is handled in
+		the `prepare_pins'. We don't need to know how this happens. We
+		only want to know that it does happen. The details matter for
+		those who are interested, but for the Client, no knowledge of
+		how is required. So, we wrap this pin-prep in a feature and
+		then simply call it. The name of the feature is enough to tell
+		you the appropriate story.
+		
+		Finally--where is the endless while-loop?
+		-----------------------------------------
+		The endless while-loop is an annoying contrivance! Having to
+		press Control+C from the keyboard to make the motor and program
+		stop is mildly annoying. So, instead, we skip the entire 'loop'
+		construct and just go for rotation of the motor.
+		
+		So, if you want to rotate a motor, why not just call it
+		`rotate_motor_by_degrees'? The feature name tells the proper
+		story and at the level of our main program routine, that is
+		all we care about. Now, if we want to know "how" this rotation
+		happens, we have a single feature to "dig-into" to understand.
+		
+		THIS reason is the primary reason why the C code is not a very
+		good teacher. It does not isolate the ideas or tasks into
+		discrete "chunks" that we can understand and examine in isolation.
+		In the C code, we're left to wonder where one task ends and
+		another begins or if the tasks are woven together, where we
+		cannot easily tear them apart.
+		
+		The Eiffel features, like `rotate_motor_by_degrees' allows us
+		to not only understand at a high level (feature name), but 
+		properly isolates "what-is-happening" and "how" within the
+		feature.
+		
+		If we then examine the rotate feature, we see even better
+		story-telling in the code (i.e. we call it "Self-Documentation").
+		Here, we see three actions: Print, Move, Sleep.
+		
+		The print is self-evident as is the sleep (pausing our action).
+		
+		The most interesting part is the `move_steps'. What precisely is
+		`move_steps'? Well, from the name, we understand we are "moving"
+		and we surmise that we are moving by something called "steps".
+		
+		Moreover, we can clearly see that moving steps involves a direction
+		based on degrees, something to do with 3ms, and a number of degrees
+		expressed as "cycles" (whatever those are).
+		
+		To understand the story (purpose) of each of the feature arguments,
+		we turn to the features being called, such as: `direction', `Minimum_ms_3',
+		and `degrees_as_cycles'. An examination of each of these will further
+		reveal the "story-of-the-code".
+		
+		For example, in `direction', we learn that it is either `Clockwise' (1)
+		or `Counter_clockwise' (0) and choosing which one is based on whether
+		the `a_degrees' passed in is positive or negative, as computed by
+		`degrees_is_clockwise' or not.
+		
+		The `Minimum_ms_3' feature tells us the story not only in its name,
+		but in its comment. Here we see that 3 is the minimum number of
+		microseconds to pause the cycling of the motor stator.
+		
+		Finally, we learn from `degrees_as_cycles' that 1-degree of turn
+		is equal to 0.703125 cycles. Our motor turning cannot do fractional
+		cycles, so we compute fractional-cycles and then truncate to just
+		the integer cycle value and use it.
+		
+		An interesting aside question would be: Is truncation our only or
+		even our best choice in this case? Not at all! We could do a
+		more typical computation where 0.5 or less gets a truncation, whereas
+		> 0.5 results in a truncated value + 1.
+		
+		SUMMARY
+		=======
+		The code is far more complex in Eiffel because doing so ultimately
+		leads to better understanding, better organization, and better and
+		more opportunities for reusable code. In fact, one could refactor
+		this code into more reusable classes. For example: One might create
+		a WP_STEPPER_MOTOR class with all of these features. That class
+		might be dedicated to a particular motor and controller, which
+		would give rise to still more classes (generic and specialized).
+
+		]"
+
+end
