@@ -13,7 +13,7 @@ feature -- Constants
 			-- Define pins connected to four phase ABCD of stepper
 		note
 			design: "[
-				These are the pins on the GPIO in-accorance-with (IAW) wiringPi pin-numbering.
+				These are the pins on the GPIO in-accordance-with (IAW) wiringPi pin-numbering.
 				Each pin is presumed to be connected to a stator-pair.
 				
 				For example: IN1, IN2, IN3, IN4 represent A, B, C, D stator phases of the
@@ -28,6 +28,7 @@ feature -- Constants
 				Insulated Power: 600VAC/1mA/1s
 				Coil: Unipolar 5 lead coil
 				]"
+			EIS: "name=wiringPi_pins", "src=http://wiringpi.com/pins/special-pin-functions/" -- see section Pins 0-6
 			EIS: "name=stator_motor_description", "src=https://www.galco.com/comp/prod/moto-ac.htm#:~:text=The%%20stator%%20then%%20is%%20the,on%%20the%%20AC%%20motor's%%20shaft."
 			EIS: "name=ULN2003_stepper", "src=https://components101.com/motors/28byj-48-stepper-motor"
 			EIS: "name=data_sheet", "src=https://components101.com/sites/default/files/component_datasheet/28byj48-step-motor-datasheet.pdf"
