@@ -1,5 +1,7 @@
 note
-	description: "Abstract notion of a ULN2003 Stepper Motor"
+	description: "Representation of a ULN2003 Stepper Motor"
+	EIS: "name=ULN2003_stepper", "src=https://components101.com/motors/28byj-48-stepper-motor"
+	EIS: "name=data_sheet", "src=https://components101.com/sites/default/files/component_datasheet/28byj48-step-motor-datasheet.pdf"
 
 deferred class
 	WP_ULN2003_STEPPER
@@ -30,8 +32,6 @@ feature -- Constants
 				]"
 			EIS: "name=wiringPi_pins", "src=http://wiringpi.com/pins/special-pin-functions/" -- see section Pins 0-6
 			EIS: "name=stator_motor_description", "src=https://www.galco.com/comp/prod/moto-ac.htm#:~:text=The%%20stator%%20then%%20is%%20the,on%%20the%%20AC%%20motor's%%20shaft."
-			EIS: "name=ULN2003_stepper", "src=https://components101.com/motors/28byj-48-stepper-motor"
-			EIS: "name=data_sheet", "src=https://components101.com/sites/default/files/component_datasheet/28byj48-step-motor-datasheet.pdf"
 			EIS: "name=pull_in_out_torque", "src=https://www.kollmorgen.com/en-us/developer-network/pull-and-pull-out-torque/"
 		once
 			Result := <<1, 4, 5, 6>>
