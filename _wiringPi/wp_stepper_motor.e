@@ -101,7 +101,7 @@ feature -- Basic operations
 	move_one_period (a_direction, a_microseconds: INTEGER)
 			-- As for N phase stepping motor, N (e.g. 4) steps is a cycle.
 			--	The function is used to drive the stepping motor clockwise
-			-- or anticlockwise to take four steps.
+			--  or anticlockwise to take four steps.
 			-- NOTE: The delay can not be less than 3ms, otherwise it will
 			--	exceed speed limit of the motor
 		require
