@@ -13,11 +13,11 @@ feature -- Constants
 			-- Define pins connected to four phase ABCD of stepper
 		note
 			design: "[
-				These are the pins on the GPIO IAW wiringPi pin-numbering.
-				A "four-phase". Each pin is connected to a stator-pair.
+				These are the pins on the GPIO in-accorance-with (IAW) wiringPi pin-numbering.
+				Each pin is presumed to be connected to a stator-pair.
 				
-				IN1, IN2, IN3, IN4 represent A, B, C, D stator phases of the
-				ULN2003 Stepper.
+				For example: IN1, IN2, IN3, IN4 represent A, B, C, D stator phases of the
+				ULN2003 Stepper. See specification example below.
 				]"
 			specifications: "[
 				28BYJ-48 Stepper Motor Technical Specifications
