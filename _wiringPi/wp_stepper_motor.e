@@ -98,14 +98,14 @@ feature -- Basic operations
 			end
 		end
 
-	move_one_period (a_direction, a_microseconds: INTEGER)
+	move_one_period (a_direction, a_milliseconds: INTEGER)
 			-- As for N phase stepping motor, N (e.g. 4) steps is a cycle.
 			--	The function is used to drive the stepping motor clockwise
 			--  or anticlockwise to take four steps.
 			-- NOTE: The delay can not be less than 3ms, otherwise it will
 			--	exceed speed limit of the motor
 		require
-			three_or_more_ms: a_microseconds >= minimum_ms_3
+			three_or_more_ms: a_milliseconds >= minimum_ms_3
 			clockwise_or_counter: (<<clockwise, counter_clockwise>>).has (a_direction)
 		local
 			l_hi_lo: INTEGER
@@ -131,7 +131,7 @@ feature -- Basic operations
 					end
 					wpi.digitalwrite (motor_pins [i.item], l_hi_lo)
 				end
-				env.sleep (milliseconds_to_nanoseconds (a_microseconds))
+				env.sleep (milliseconds_to_nanoseconds (a_milliseconds))
 			end
 		end
 
