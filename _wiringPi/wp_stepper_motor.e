@@ -57,14 +57,14 @@ feature -- Miscellaneous
 
 feature -- Basic operations
 
-	rotate_motor_by_degrees (a_degrees: INTEGER)
+	rotate_by_degrees (a_degrees: INTEGER)
 			-- Rotate stator-motor `a_degrees' in `clockwise' or `counter_clockwise' direction.
 		require
 			valid_degrees: (-360 |..| 360).has (a_degrees)
 		do
 			print ("Rotating " + a_degrees.out + "%N")
 			move_steps (direction (a_degrees), minimum_ms_3, degrees_as_cycles (a_degrees.abs))
-			env.sleep (microseconds_to_nanoseconds (500)) -- delay 500ms
+			env.sleep (milliseconds_to_nanoseconds (500)) -- delay 500 milliseconds
 		end
 
 	prepare_pins
@@ -131,7 +131,7 @@ feature -- Basic operations
 					end
 					wpi.digitalwrite (motor_pins [i.item], l_hi_lo)
 				end
-				env.sleep (microseconds_to_nanoseconds (a_microseconds))
+				env.sleep (milliseconds_to_nanoseconds (a_microseconds))
 			end
 		end
 
@@ -232,7 +232,7 @@ note
 		construct and just go for rotation of the motor.
 		
 		So, if you want to rotate a motor, why not just call it
-		`rotate_motor_by_degrees'? The feature name tells the proper
+		`rotate_by_degrees'? The feature name tells the proper
 		story and at the level of our main program routine, that is
 		all we care about. Now, if we want to know "how" this rotation
 		happens, we have a single feature to "dig-into" to understand.
@@ -244,7 +244,7 @@ note
 		another begins or if the tasks are woven together, where we
 		cannot easily tear them apart.
 		
-		The Eiffel features, like `rotate_motor_by_degrees' allows us
+		The Eiffel features, like `rotate_by_degrees' allows us
 		to not only understand at a high level (feature name), but 
 		properly isolates "what-is-happening" and "how" within the
 		feature.

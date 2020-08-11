@@ -1,5 +1,5 @@
 note
-	description: "Wrapped WiringPi C Functions."
+	description: "Representation of Wrapped WiringPi C Functions."
 	ca_ignore: "CA088" -- Mergeable feature clauses for Status Report is actually not true.
 
 class

@@ -24,13 +24,23 @@ feature {NONE} -- Initialization
 			-- Initialize Current.
 		do
 			print ("Program is starting ... %N")
-			prepare_pins
-			rotate_motor_by_degrees (360) -- rotating 360° clockwise, a total of 2048 steps in a circle, namely, 512 cycles.
-			rotate_motor_by_degrees (-360) -- rotating 360° counter-clockwise
-			rotate_motor_by_degrees (90)
-			rotate_motor_by_degrees (-45)
-			rotate_motor_by_degrees (45)
-			rotate_motor_by_degrees (-90)
+
+			motor.prepare_pins
+			
+			motor.rotate_by_degrees (360) -- rotating 360° clockwise, a total of 2048 steps in a circle, namely, 512 cycles.
+			motor.rotate_by_degrees (-360) -- rotating 360° counter-clockwise
+			motor.rotate_by_degrees (90)
+			motor.rotate_by_degrees (-45)
+			motor.rotate_by_degrees (45)
+			motor.rotate_by_degrees (-90)
+		end
+
+feature {NONE} -- Implementation
+
+	motor: WP_ULN2003_STEPPER
+			-- Access to motor code and electronics.
+		once
+			create Result
 		end
 
 end

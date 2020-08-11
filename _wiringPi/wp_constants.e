@@ -45,7 +45,8 @@ feature -- // Pull up/down/none
 feature -- Constants
 
 	ms_to_ns_multiplier: INTEGER = 1_000_000
-			-- ns/ms = 1_000_000_000 / 1_000_000 = 1_000
+			-- milliseconds-to-nanoseconds multiplier.
+			-- (e.g. 1_000_000 ns = 1 millisecond)
 
 note
 	documentation: "[

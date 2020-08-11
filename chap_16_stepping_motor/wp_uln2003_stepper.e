@@ -1,9 +1,9 @@
 note
-	description: "Representation of a ULN2003 Stepper Motor"
+	description: "Representation of a ULN2003 Stepper Motor Driver"
 	EIS: "name=ULN2003_stepper", "src=https://components101.com/motors/28byj-48-stepper-motor"
 	EIS: "name=data_sheet", "src=https://components101.com/sites/default/files/component_datasheet/28byj48-step-motor-datasheet.pdf"
 
-deferred class
+class
 	WP_ULN2003_STEPPER
 
 inherit
