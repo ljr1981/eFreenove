@@ -26,14 +26,14 @@ feature -- Pin Modes
 	pin_modes: ARRAY [INTEGER]
 		once
 			Result := <<
-												pin_mode_INPUT_const,
-												pin_mode_OUTPUT_const,
-												pin_mode_PWM_OUTPUT_const,
-												pin_mode_GPIO_CLOCK_const,
-												pin_mode_SOFT_PWM_OUTPUT_const,
-												pin_mode_SOFT_TONE_OUTPUT_const,
-												pin_mode_PWM_TONE_OUTPUT_const
-												>>
+						pin_mode_INPUT_const,
+						pin_mode_OUTPUT_const,
+						pin_mode_PWM_OUTPUT_const,
+						pin_mode_GPIO_CLOCK_const,
+						pin_mode_SOFT_PWM_OUTPUT_const,
+						pin_mode_SOFT_TONE_OUTPUT_const,
+						pin_mode_PWM_TONE_OUTPUT_const
+					>>
 		ensure
 			count: Result.count = 7 -- modes total (0-6)
 		end
@@ -58,6 +58,8 @@ feature -- Pin Modes
 
 	pin_mode_PWM_TONE_OUTPUT_const: INTEGER = 6
 			-- PWM (Pulse-width Modulation) TONE OUTPUT.
+
+feature -- High-Low Constants
 
 	HIGH_const: INTEGER = 1
 			-- Raise the voltage (i.e. "on").
