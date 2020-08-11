@@ -23,11 +23,26 @@ feature -- Button & LED specific
 
 feature -- Pin Modes
 
-	INPUT_const: INTEGER = 0
+	pin_mode_INPUT_const: INTEGER = 0
 			-- Pin-mode for INPUT.
 
-	OUTPUT_const: INTEGER = 1
+	pin_mode_OUTPUT_const: INTEGER = 1
 			-- Pin-mode for OUTPUT.
+
+	pin_mode_PWM_OUTPUT_const: INTEGER = 2
+			-- PWM (Pulse-width Modulation) OUTPUT.
+
+	pin_mode_GPIO_CLOCK_const: INTEGER = 3
+			--GPIO (General-purpose Input/Output) CLOCK.
+
+	pin_mode_SOFT_PWM_OUTPUT_const: INTEGER = 4
+			-- Software-based PWM (Pulse-width Modulation) OUTPUT.
+
+	pin_mode_SOFT_TONE_OUTPUT_const: INTEGER = 5
+			-- Software-based TONE OUTPUT.
+
+	pin_mode_PWM_TONE_OUTPUT_const: INTEGER = 6
+			-- PWM (Pulse-width Modulation) TONE OUTPUT.
 
 	HIGH_const: INTEGER = 1
 			-- Raise the voltage (i.e. "on").

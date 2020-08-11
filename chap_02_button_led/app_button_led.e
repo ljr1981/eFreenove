@@ -32,8 +32,8 @@ feature {NONE} -- Initialization
 			print ("%N")
 			print ("%N")
 
-			wpi.pinMode (LED_pin_0_const, OUTPUT_const)			--; //Set ledPin to output
-			wpi.pinMode (buttonPin_const, INPUT_const)			--; //Set buttonPin to input
+			wpi.pinMode (LED_pin_0_const, pin_mode_OUTPUT_const)			--; //Set ledPin to output
+			wpi.pinMode (buttonPin_const, pin_mode_INPUT_const)			--; //Set buttonPin to input
 
 			wpi.pullUpDnControl (buttonPin_const, PUD_UP_const)	--; //pull up to HIGH level
 

@@ -73,7 +73,7 @@ feature -- Basic operations
 			across -- Set each pin for OUTPUT ...
 				motor_pins as ic
 			loop
-				wpi.pinMode (ic.item, wpi.OUTPUT_const)
+				wpi.pinMode (ic.item, wpi.pin_mode_OUTPUT_const)
 			end
 		end
 

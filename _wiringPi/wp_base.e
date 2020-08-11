@@ -160,13 +160,30 @@ feature -- WiringPi Wraps
 feature -- Status Report
 
 	is_valid_wpi_pin_number (a_value: INTEGER): BOOLEAN
-			--
+			-- Is `a_value' a valid wiringPi pin number?
+		note
+			EIS: "name=wiringPi_pins",
+					"src=http://wiringpi.com/pins/special-pin-functions/"
 		do
 			Result := (0 |..| 20).has (a_value)
 		end
 
 	is_valid_pin_mode (a_value: INTEGER): BOOLEAN
 			-- Is `a_value' a valid "pin mode"?
+		note
+			wiringpi_header_detail: "[
+			// Pin modes
+
+			#define	INPUT			 	0
+			#define	OUTPUT			 	1
+			#define	PWM_OUTPUT		 	2
+			#define	GPIO_CLOCK		 	3
+			#define	SOFT_PWM_OUTPUT		4
+			#define	SOFT_TONE_OUTPUT	5
+			#define	PWM_TONE_OUTPUT		6
+			
+			See wiringPi.h file, starting in line #56
+			]"
 		do
 			Result := (0 |..| 6).has (a_value)
 		end
@@ -179,6 +196,7 @@ feature -- Status Report
 
 	is_valid_pud (a_value: INTEGER): BOOLEAN
 			-- Is `a_value' a valid OFF, UP, DOWN?
+			-- PUD = Pull Up/Down.
 		do
 			Result := (<<PUD_OFF_const, PUD_UP_const, PUD_DOWN_const>>).has (a_value)
 		end
