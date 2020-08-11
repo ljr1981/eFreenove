@@ -185,7 +185,7 @@ feature -- Status Report
 			See wiringPi.h file, starting in line #56
 			]"
 		do
-			Result := (0 |..| 6).has (a_value)
+			Result := pin_modes.has (a_value)
 		end
 
 	is_valid_hi_lo (a_value: INTEGER): BOOLEAN
