@@ -365,7 +365,7 @@ note
 		#5 - Synchronous (lowest torque/highest speed) - operating under no-load at max speed
 
 		]"
-
--- ─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼ ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ ▀ ▄ █ ▌ ▐ ░ ▒ ▓ ■ □ ▪ ▫ ▬ ▲ ► ▼ ◄ ◊ ○ ◌ ●  ◘ ◙ ◦
+	EIS: "name=quora_torque",
+			"src=https://www.quora.com/?activity_story=47205136"
 
 end
