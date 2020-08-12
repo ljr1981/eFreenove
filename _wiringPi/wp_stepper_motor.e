@@ -300,6 +300,7 @@ note
 		]"
 	torque: "[
 		What is “pull-out torque”?
+		
 		NEMA, the National Electrical Manufacturer’s Associaton, sets the standards for 
 		electric motor performance. For a standard NEMA Design B induction motor, there 
 		are four specific torque points along its torque-speed curve:
@@ -308,6 +309,7 @@ note
 		Pull-up torque
 		Pull-out torque
 		Full load torque
+		
 		Locked rotor torque is self-explanatory - it’s the amount of torque the motor
 		will produce when 100% rated voltage and frequency is applied to the motor 
 		stator and the shaft of the motor is held still.
