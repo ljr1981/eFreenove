@@ -1,4 +1,4 @@
-note
+﻿note
 	description: "Abstract notion of a wiringPi Stepper Motor Driver"
 
 deferred class
@@ -32,7 +32,7 @@ feature -- Status report
 		end
 
 	degrees_as_cycles (a_degrees: INTEGER): INTEGER
-			-- 512 cycles = 360� or 0.703125 cycles per 1�
+			-- 512 cycles = 360° or 0.703125 cycles per 1°
 		do
 			Result := (a_degrees / cycles_per_degree).truncated_to_integer
 		end
@@ -151,7 +151,7 @@ feature -- Constants
 			-- The minimum microseconds to pause motor.
 
 	cycles_per_degree: REAL = 0.703125
-			-- 0.703125 cycles per 1� (360� / 512 cycles)
+			-- 0.703125 cycles per 1° (360° / 512 cycles)
 
 	clockwise: INTEGER = 1
 			-- Representation of `clockwise' rotation vs. `counter_clockwise'.
@@ -298,5 +298,74 @@ note
 		would give rise to still more classes (generic and specialized).
 
 		]"
+	torque: "[
+		What is “pull-out torque”?
+		NEMA, the National Electrical Manufacturer’s Associaton, sets the standards for 
+		electric motor performance. For a standard NEMA Design B induction motor, there 
+		are four specific torque points along its torque-speed curve:
+
+		Locked rotor torque
+		Pull-up torque
+		Pull-out torque
+		Full load torque
+		Locked rotor torque is self-explanatory - it’s the amount of torque the motor
+		will produce when 100% rated voltage and frequency is applied to the motor 
+		stator and the shaft of the motor is held still.
+
+		Pull-up torque is the amount of torque the motor will produce once it begins
+		to spin. If the torque applied to the shaft is greater than the pull-up torque
+		but less than the locked rotor torque, the motor will not accelerate to speed,
+		but will instead spin slowly until the motor fails or the motor protection
+		trips it out. Some motors don’t have a pull-up torque rating, as the speed
+		torque curve does not dip below the locked rotor torque until after reaching
+		the pull-out torque.
+
+		Pull-out, or breakdown torque is the maximum torque the motor can produce at
+		full rated voltage and frequency. If the motor is running and is loaded beyond
+		the pull-out torque, it will “pull out” or stall.
+
+		Full-load torque is the torque the motor is designed to produce when 100% of
+		rated voltage and frequency are applied, and the motor is spinning at its
+		designed speed.
+
+		See this graph:
+
+	Motor
+	Torque
+	Rating
+			│                                                  
+			│                                                  
+	300%	┼                                                  
+			│                                                  
+			│              #3                                    
+			│#1            ..                                      
+			│..      ....  ..                                          
+			│  ..  ..        ..                                      
+	200%	┼    ..            .                                  
+			│      #2           .                               
+			│                    .                              
+			│                     .                             
+			│                      .                            
+			│                      .                            
+	100%	┼                      .#4                            
+			│                      .                            
+			│                      .                            
+			│                       .                           
+			│                        .                          
+			│                        .#5                          
+			└────────────┴───────────┴─────────────────────────
+						50%			100%
+						
+						% of Motor Speed
+						
+		#1 - Locked Rotor / Break-away Torque - Pressure needed to start the motor
+		#2 - Pull-up Torque - Power of motor to move a load initially falls and then rises to peak
+		#3 - Pull-down, Breakdown, or Peak Torque - Briefly reaches a peak pressure or power and then falls
+		#4 - Rated Load Torque - The motor operating at it "rated load", followed by removing load, gaining speed
+		#5 - Synchronous (lowest torque/highest speed) - operating under no-load at max speed
+
+		]"
+
+-- ─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼ ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ ▀ ▄ █ ▌ ▐ ░ ▒ ▓ ■ □ ▪ ▫ ▬ ▲ ► ▼ ◄ ◊ ○ ◌ ●  ◘ ◙ ◦
 
 end
