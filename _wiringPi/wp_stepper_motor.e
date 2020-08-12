@@ -369,5 +369,5 @@ note
 		]"
 	EIS: "name=quora_torque",
 			"src=https://www.quora.com/?activity_story=47205136"
-
+	EIS: "protocol=pdf", "src=./chap_16_stepping_motor/torque_explanation.pdf"
 end
