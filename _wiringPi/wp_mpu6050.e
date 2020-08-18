@@ -16,7 +16,7 @@ create
 feature {NONE} -- Initialization
 
 	make
-			--
+			-- Initialize and test connection.
 		do
 			accelgyro_initialize (accelgyro)
 			if accelgyro_test_connection (accelgyro) then
@@ -69,7 +69,7 @@ feature -- Miscellaneous
 feature -- Basic operations
 
 	accelgyro_initialize (a_object: POINTER)
-			--
+			-- Initialize the MPU6050.
 		external
 			"C++ inline use <MPU6050.h>"
 		alias
@@ -77,7 +77,7 @@ feature -- Basic operations
 		end
 
 	accelgyro_test_connection (a_object: POINTER): BOOLEAN
-			--
+			-- True if the MPU6050 connection is good.
 		external
 			"C++ inline use <MPU6050.h>"
 		alias
