@@ -53,7 +53,4 @@ feature -- Inapplicable
 
 feature {NONE} -- Implementation
 
-invariant
-	invariant_clause: True -- Your invariant here
-
 end
