@@ -84,6 +84,16 @@ feature -- Basic operations
 			"((MPU6050 *)$a_object)->testConnection()"
 		end
 
+	accelgyro_getmotion6 (a_object: POINTER; ax, ay, az, gx, gy, gz: TYPED_POINTER [INTEGER_16])
+			-- Get six motion measurements.
+		external
+			"C++ inline use <MPU6050.h>"
+		alias
+			"[
+				((MPU6050 *)$a_object)->getMotion6($ax, $ay, $az, $gx, $gy, $gz);
+				]"
+		end
+
 feature -- Obsolete
 
 feature -- Inapplicable

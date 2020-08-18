@@ -16,9 +16,16 @@ feature {NONE} -- Initialization
 			-- Initialization for `Current'.
 		local
 			l_mpu: WP_MPU6050
+			lax, lay, laz, lgx, lgy, lgz: INTEGER_16
 		do
 			default_create
 			create l_mpu.make
+			across
+				1 |..| 10 as ic
+			loop
+				l_mpu.accelgyro_getmotion6 (l_mpu.accelgyro, $lax, $lay, $laz, $lgx, $lgy, $lgz)
+				print ("a/g: " + lax.out + ", " + lay.out + ", " + laz.out + " | " + lgx.out + ", " + lgy.out + ", " + lgz.out + "%N" )
+			end
 		end
 
 feature -- Access
