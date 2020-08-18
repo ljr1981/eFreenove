@@ -16,15 +16,20 @@ feature {NONE} -- Initialization
 			-- Initialization for `Current'.
 		local
 			l_mpu: WP_MPU6050
-			lax, lay, laz, lgx, lgy, lgz: INTEGER_16
+			l_readings: TUPLE [ax, ay, az, gx, gy, gz: INTEGER_16]
 		do
 			default_create
-			create l_mpu.make
+			create l_mpu
+			if l_mpu.is_good_connection then
+				print ("MPU6050 connection successful%N")
+			else
+				print ("MPU6050 connection failed%N")
+			end
 			across
 				1 |..| 10 as ic
 			loop
-				l_mpu.accelgyro_getmotion6 (l_mpu.accelgyro, $lax, $lay, $laz, $lgx, $lgy, $lgz)
-				print ("a/g: " + lax.out + ", " + lay.out + ", " + laz.out + " | " + lgx.out + ", " + lgy.out + ", " + lgz.out + "%N" )
+				l_readings := l_mpu.read_motion_buffer
+				print ("a/g: " + l_readings.ax.out + ", " + l_readings.ay.out + ", " + l_readings.az.out + " | " + l_readings.gx.out + ", " + l_readings.gy.out + ", " + l_readings.gz.out + "%N" )
 			end
 		end
 
