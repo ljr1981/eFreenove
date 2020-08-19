@@ -41,6 +41,17 @@ feature -- Status report
 
 	read_motion_buffer: TUPLE [ax, ay, az, gx, gy, gz: INTEGER_16]
 			-- Read buffered acceleration and attitude on XYZ-axis data.
+		note
+			purpose: "[
+				Accelleration values in ax, ay, az
+				Gyroscope values in gx, gy, gz
+				
+				Accelleration is an INTEGER_16 range of 0-16_384 -- AFS_SEL=0 16,384 LSB/g
+				Gyroscope is an INTEGER_16 range of 0-131 -- FS_SEL=0 131 LSB/(º/s)
+				
+				To get a proper sense of usage, the xyz values for each need to
+				be divided by either 16_384 or 131 into a REAL value.
+				]"
 		local
 			l_ax, l_ay, l_az, l_gx, l_gy, l_gz: INTEGER_16
 		do

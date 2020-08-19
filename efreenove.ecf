@@ -78,4 +78,11 @@
 		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
 		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
 	</target>
+	<target name="dht" extends="efreenove">
+		<description>DHT11 Temp/Humidity Sensor</description>
+		<root class="APP_DHT11" feature="make"/>
+		<setting name="executable_name" value="DHT11"/>
+		<external_include location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib"/>
+		<external_object location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib/DHT.o"/>
+	</target>
 </system>
