@@ -13,21 +13,21 @@ inherit
 
 feature -- Test routines
 
-	general_test
-			-- New test routine
-		note
-			testing: "execution/serial"
-			testing: "covers/{APP_BUTTON_LED}"
-		local
-			l_app: APP_BUTTON_LED
-		do
-			create l_app
-			assert_integers_equal ("blah", 0, l_app.led_pin_0_const)
-			l_app.dit_dah_queue.force ('.')
-			l_app.dit_dah_queue.force ('.')
-			l_app.dit_dah_queue.force ('.')
-			assert_characters_equal ("S", 'S', l_app.translate_dit_dah_queue_to_letter)
-		end
+--	general_test
+--			-- New test routine
+--		note
+--			testing: "execution/serial"
+--			testing: "covers/{APP_BUTTON_LED}"
+--		local
+--			l_app: APP_BUTTON_LED
+--		do
+--			create l_app
+--			assert_integers_equal ("blah", 0, l_app.led_pin_0_const)
+--			l_app.dit_dah_queue.force ('.')
+--			l_app.dit_dah_queue.force ('.')
+--			l_app.dit_dah_queue.force ('.')
+--			assert_characters_equal ("S", 'S', l_app.translate_dit_dah_queue_to_letter)
+--		end
 
 note
 	analysis_notes: "[
