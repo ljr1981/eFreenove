@@ -74,16 +74,16 @@
 		<description>Chapter 25 - Attitude Sensor</description>
 		<root class="APP_MPU6050" feature="make"/>
 		<setting name="executable_name" value="MPU6050RAW"/>
-		<external_include location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib"/>
-		<external_object location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
-		<external_object location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
+		<external_include location="../../../chap_25_attitude_sensor_MPU6050/Clib"/>
+		<external_object location="../../../chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
+		<external_object location="../../../chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
 	</target>
 	<target name="dht" extends="efreenove">
 		<description>Chapter 21 - DHT11 Temp/Humidity Sensor</description>
 		<root class="APP_DHT11" feature="make"/>
 		<setting name="executable_name" value="DHT11"/>
-		<external_include location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib"/>
-		<external_object location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib/DHT.o"/>
+		<external_include location="$(HOME)/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib"/>
+		<external_object location="../../../chap_21_hygrothermograph_DHT11/Clib/DHT.o"/>
 	</target>
 	<target name="ultra" extends="efreenove">
 		<description>Chapter 24 - Ultrasonic Ranging Module</description>
