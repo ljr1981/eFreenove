@@ -75,7 +75,7 @@
 		<description>Chapter 25 - Attitude Sensor</description>
 		<root class="APP_MPU6050" feature="make"/>
 		<setting name="executable_name" value="MPU6050RAW"/>
-		<external_include location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib"/>
+		<external_include location="$HOME/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib"/>
 		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
 		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
 	</target>
