@@ -30,6 +30,7 @@
 		</external_cflag>
 		<precompile name="base-scoop-safe" location="\home\larry\.es\eiffel_user_files\19.05\precomp\spec\linux-armv7\base-scoop-safe.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="decimal" location="$ISE_LIBRARY\contrib\library\math\decimal\decimal\decimal.ecf"/>
 		<library name="diff" location="$ISE_LIBRARY\library\diff\diff.ecf"/>
 		<library name="testing" location="$ISE_LIBRARY\library\testing\testing.ecf"/>
 		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
@@ -84,5 +85,10 @@
 		<setting name="executable_name" value="DHT11"/>
 		<external_include location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib"/>
 		<external_object location="/home/larry/Documents/github/eFreenove/chap_21_hygrothermograph_DHT11/Clib/DHT.o"/>
+	</target>
+	<target name="ultra" extends="efreenove">
+		<description>Ultrasonic Module</description>
+		<root class="APP_ULTRA" feature="make"/>
+		<setting name="executable_name" value="UltrasonicRanging"/>
 	</target>
 </system>

@@ -141,12 +141,6 @@ feature -- Inapplicable
 
 feature -- Constants
 
-	env: EXECUTION_ENVIRONMENT
-			-- Access to the {EXECUTION_ENVIRONMENT}.
-		once
-			create Result
-		end
-
 	minimum_ms_3: INTEGER = 3
 			-- The minimum microseconds to pause motor.
 

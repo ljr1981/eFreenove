@@ -11,6 +11,12 @@ feature -- Common
 	One_second_const: INTEGER_64 = 1_000_000_000
 			-- 1 million nano-seconds = 1 second.
 
+	Env: EXECUTION_ENVIRONMENT
+			-- Access to sleep (delay)
+		once
+			create Result
+		end
+
 feature -- Blink specific
 
 	LED_pin_0_const: INTEGER = 0

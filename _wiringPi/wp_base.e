@@ -35,6 +35,20 @@ feature -- Status Report
 	is_wiringpi_initialized: BOOLEAN
 			-- Has the `wiringPiSetup' been called?
 
+feature -- Timing Operations
+
+	delayMicroseconds (n: INTEGER)
+			-- Sleep for `n' Microseconds.
+		do
+			Env.sleep (n * 1_000)
+		end
+
+	delayMilliseconds (n: INTEGER)
+			-- Sleep for `n' Milliseconds.
+		do
+			Env.sleep (n * 1_000_000)
+		end
+
 feature -- Basic Operations
 
 	initialize_wiringpi
