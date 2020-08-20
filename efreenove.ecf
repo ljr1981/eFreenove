@@ -28,7 +28,6 @@
 		<external_cflag value="-Wno-write-strings">
 			<description> if you don't want the warning message 'ISO C++ forbids converting a string ...' to show.</description>
 		</external_cflag>
-		<precompile name="base-scoop-safe" location="\home\larry\.es\eiffel_user_files\19.05\precomp\spec\linux-armv7\base-scoop-safe.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="decimal" location="$ISE_LIBRARY\contrib\library\math\decimal\decimal\decimal.ecf"/>
 		<library name="diff" location="$ISE_LIBRARY\library\diff\diff.ecf"/>
@@ -75,9 +74,9 @@
 		<description>Chapter 25 - Attitude Sensor</description>
 		<root class="APP_MPU6050" feature="make"/>
 		<setting name="executable_name" value="MPU6050RAW"/>
-		<external_include location="$HOME/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib"/>
-		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
-		<external_object location="/home/larry/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
+		<external_include location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib"/>
+		<external_object location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/MPU6050.o"/>
+		<external_object location="$(HOME)/Documents/github/eFreenove/chap_25_attitude_sensor_MPU6050/Clib/I2Cdev.o"/>
 	</target>
 	<target name="dht" extends="efreenove">
 		<description>Chapter 21 - DHT11 Temp/Humidity Sensor</description>
