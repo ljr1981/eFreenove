@@ -12,7 +12,7 @@ class
 	APP_STEPPING_MOTOR
 
 inherit
-	WP_ULN2003_STEPPER
+	WP_ULN2003_STEPPER -- is this still needed in view of `motor' feature?
 
 create
 	{TEST_SET_SUPPORT} default_create,
@@ -26,7 +26,7 @@ feature {NONE} -- Initialization
 			print ("Program is starting ... %N")
 
 			motor.prepare_pins
-			
+
 			motor.rotate_by_degrees (360) -- rotating 360° clockwise, a total of 2048 steps in a circle, namely, 512 cycles.
 			motor.rotate_by_degrees (-360) -- rotating 360° counter-clockwise
 			motor.rotate_by_degrees (90)
