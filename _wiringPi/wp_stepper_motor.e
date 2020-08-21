@@ -1,6 +1,11 @@
 ﻿note
 	description: "Abstract notion of a wiringPi Stepper Motor Driver"
 
+	references: "EIS links (below) are for general reference:"
+	EIS: "src=https://en.wikipedia.org/wiki/Stepper_motor"
+	EIS: "src=https://dovermotion.com/resources/motion-control-handbook/stepping-motor-drives/"
+	EIS: "name=excellent_video_tutorial", "src=https://youtu.be/Ew6eVGnj7r0"
+
 deferred class
 	WP_STEPPER_MOTOR
 
