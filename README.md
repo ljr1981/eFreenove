@@ -5,6 +5,9 @@ The Freenove Raspberry Pi 4 electronics breadboard kit rendered in pure Eiffel w
 
 The examples wrap both C and C++ as needed. For C++, many example targets depend on external object and header files. You can find these references in the target Advanced->Externals tree node, where you will see both Object and Include nodes. The object nodes are direct references to necessary object files, whereas the includes are referencing enclosing folders. This allows Eiffel to managage which header files are needed (see Eiffel code external "use <my_header.h>" references).
 
+# Coming Soon
+The limits of the standard GPIO are quickly apparent. The GPIO can only connect with and operate a limited number of external devices and sensors. What is needed and wanted is a means to extend or expand the number of controllable sensors and devices. One such device under examination at the moment is the UniPi 1.1. See: https://www.unipi.technology/unipi-1-1-p36
+
 # So Far
 What has been wrapped and coded so far?
 
