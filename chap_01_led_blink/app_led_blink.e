@@ -28,7 +28,7 @@ feature {NONE} -- Initialization
 
 			print ("LED Blink 10 times across 20 seconds ...%N")
 
-			wpi.pinMode (LED_pin_0_const, OUTPUT_const)
+			wpi.pinMode (LED_pin_0_const, pin_mode_OUTPUT_const)
 
 			across
 				1 |..| 10 as ic
