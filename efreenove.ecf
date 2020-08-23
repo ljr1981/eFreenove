@@ -31,7 +31,7 @@
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="decimal" location="$ISE_LIBRARY\contrib\library\math\decimal\decimal\decimal.ecf"/>
 		<library name="diff" location="$ISE_LIBRARY\library\diff\diff.ecf"/>
-		<library name="libpgpio" location="..\wrapc_pgpio\libpgpio.ecf"/>
+		<library name="epigpio" location="\home\larry\Documents\github\epigpio\epgpio.ecf"/>
 		<library name="testing" location="$ISE_LIBRARY\library\testing\testing.ecf"/>
 		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
 		<cluster name="efreenove" location=".\" recursive="true"/>
