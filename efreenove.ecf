@@ -31,6 +31,7 @@
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="decimal" location="$ISE_LIBRARY\contrib\library\math\decimal\decimal\decimal.ecf"/>
 		<library name="diff" location="$ISE_LIBRARY\library\diff\diff.ecf"/>
+		<library name="libpgpio" location="..\wrapc_pgpio\libpgpio.ecf"/>
 		<library name="testing" location="$ISE_LIBRARY\library\testing\testing.ecf"/>
 		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
 		<cluster name="efreenove" location=".\" recursive="true"/>
@@ -89,5 +90,23 @@
 		<description>Chapter 24 - Ultrasonic Ranging Module</description>
 		<root class="APP_ULTRA" feature="make"/>
 		<setting name="executable_name" value="UltrasonicRanging"/>
+	</target>
+	<target name="i2c_lcd1602" extends="efreenove">
+		<description>Chapter 20 - I2C LCD1602 </description>
+		<root class="APP_LCD1602" feature="make"/>
+		<setting name="executable_name" value="lcd1602"/>
+		<external_include location="/home/larry/Documents/github/wrapc_pgpio/generated_wrapper/c/include"/>
+		<external_cflag value="-lpigpio">
+			<description>reference to the installed pigpio library (see installation instructions)</description>
+		</external_cflag>
+		<external_cflag value="-lrt">
+			<description>What is rt?</description>
+		</external_cflag>
+		<external_cflag value="-pthread">
+			<description>what is p and thread?</description>
+		</external_cflag>
+		<external_cflag value="-w">
+			<description>Ignore all warnings</description>
+		</external_cflag>
 	</target>
 </system>
