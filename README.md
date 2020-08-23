@@ -18,7 +18,13 @@ This code is designed to be compiled directly on a RaspberryPi 4B using Raspian.
 
 There are direct full-path dependecies in the ECF file that you will need to modify in order to get this code to work properly. You will also need the Freenove code and breadboarding kit in order to make the example projects code work as-is. However, you can use certain elements like {WP_BASE} (see below) for any RaspberryPi 4B GPIO solutions. Some of the C++ code can be reused as-is without needing the Freenove kit as well.
 
+## ePiGPIO
+An active and stable C API is the PiGPIO library, which has been wrapped in pure Eiffel. The race is now on to further wrap the very cryptic (undocumented) pigpio features in highly descriptive and useful Eiffel features. For the moment, that wrapping will take place in eFreenove as I attempt to move all of the deprecated wiringPi dependent code to the active PiGPIO library (epigpio).
+
 ## WiringPi C API
+### WARNING
+The wiringPi C API has been deprecated as of 2019! This library has been widely abused by its consumers and the author is unhappy enough to abandon it. Because of this, the likelihood of imminent failure is fairly high. No more work (in this project) will be applied to code dependent on it. Instead, see PiGPIO (epigpio at https://github.com/ljr1981/epigpio).
+### Description
 For electronic components that can be controlled through the C API of the WiringPi library, the {WP_BASE} class contains a host of functionally wrapped C externals. The primary advantage of using (referencing) or inheriting from {WP_BASE} is that the `default_create` creation procedure automatically handles the required initialization and setup of the WiringPi system. The very act of creating an instance of {WP_BASE} (in any way—directly or through inheritance) will cause this job to be handled for you. There is no need for you to manually perform initialization and setup.
 
 There are wrappers for many of the basic functions of the WiringPi library. You can utilize these as you have need. No further wrapping code or setup is required.
