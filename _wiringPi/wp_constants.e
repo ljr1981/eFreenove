@@ -82,6 +82,9 @@ feature -- // Pull up/down/none
 
 feature -- Constants
 
+	BASE_const: INTEGER = 64
+			-- Base pin constant.
+
 	ms_to_ns_multiplier: INTEGER = 1_000_000
 			-- milliseconds-to-nanoseconds multiplier.
 			-- (e.g. 1_000_000 ns = 1 millisecond)

@@ -97,16 +97,16 @@
 		<setting name="executable_name" value="lcd1602"/>
 		<external_include location="/home/larry/Documents/github/wrapc_pgpio/generated_wrapper/c/include"/>
 		<external_cflag value="-lpigpio">
-			<description>reference to the installed pigpio library (see installation instructions)</description>
-		</external_cflag>
-		<external_cflag value="-lrt">
-			<description>What is rt?</description>
+			<description>PIPIO installed library</description>
 		</external_cflag>
 		<external_cflag value="-pthread">
 			<description>what is p and thread?</description>
 		</external_cflag>
 		<external_cflag value="-w">
 			<description>Ignore all warnings</description>
+		</external_cflag>
+		<external_cflag value="-lwiringPiDev">
+			<description>wiringPiDev?</description>
 		</external_cflag>
 	</target>
 </system>
