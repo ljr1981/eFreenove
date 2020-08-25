@@ -1,5 +1,5 @@
 note
-	description: "A PIGPIO Version (vs deprecated WiringPi) of LCD1602"
+	description: "A PIGPIO Version and deprecated WiringPi version of LCD1602"
 
 class
 	APP_LCD1602
@@ -31,11 +31,8 @@ feature {NONE} -- Initialization
 		local
 			l_lcd: WP_PCF8574_LCD1602A
 			l_handle: INTEGER
-			l_time: TIME
-			l_temp: DECIMAL
 			l_cpu_string,
 			l_time_string: STRING
-			l_file: PLAIN_TEXT_FILE
 		do
 			create l_lcd
 
@@ -60,22 +57,11 @@ feature {NONE} -- Initialization
 				across
 					1 |..| 30 as ic
 				loop
-					create l_file.make_open_read ("/sys/class/thermal/thermal_zone0/temp")
-					l_file.read_stream (l_file.count)
-					create l_temp.make_from_string (( (l_file.last_string.to_integer / 1000) * (9/5) + 32).out)
-					l_file.close
-
-					l_temp := l_temp * 10
-					create l_temp.make_from_string (l_temp.to_integer.out)
-					create l_temp.make_from_string (l_temp.to_double.out)
-					l_temp := l_temp / 10
-					l_cpu_string := "CPU Temp: " + l_temp.out + "F"
-
+					l_cpu_string := "CPU Temp: " + cpu_temperature.out + "F"
 					print (l_cpu_string + "%N")
 					l_lcd.lcdPrint (l_handle, l_cpu_string, 1)
 
-					create l_time.make_now; l_time_string := "Time: " + l_time.out
-
+					l_time_string := "Time: " + (create {TIME}.make_now).out
 					print (l_time_string + "%N")
 					l_lcd.lcdPrint (l_handle, l_time_string, 2)
 
@@ -116,6 +102,24 @@ feature {NONE} -- Initialization
 feature -- Access
 
 feature -- Measurement
+
+	cpu_temperature: DECIMAL
+			-- Compute the current CPU temperature in Fahrenheit.
+		local
+			l_temp: DECIMAL
+			l_file: PLAIN_TEXT_FILE
+		do
+			create l_file.make_open_read ("/sys/class/thermal/thermal_zone0/temp")
+			l_file.read_stream (l_file.count)
+			create l_temp.make_from_string (( (l_file.last_string.to_integer / 1000) * (9/5) + 32).out)
+			l_file.close
+
+			l_temp := l_temp * 10
+			create l_temp.make_from_string (l_temp.to_integer.out)
+			create l_temp.make_from_string (l_temp.to_double.out)
+			l_temp := l_temp / 10
+			Result := l_temp
+		end
 
 feature -- Status report
 
