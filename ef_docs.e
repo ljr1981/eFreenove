@@ -1,5 +1,9 @@
 note
 	description: "General Documentation"
+	EIS: "name=freenove_ultimate_starter_kit",
+			"src=https://www.amazon.com/gp/product/B06W54L7B5/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1"
+	EIS: "name=vilros_raspberry_pi_kit",
+			"src=https://www.amazon.com/gp/product/B07TKFFCF1/ref=ppx_yo_dt_b_asin_title_o04_s01?ie=UTF8&psc=1"
 
 deferred class
 	EF_DOCS
