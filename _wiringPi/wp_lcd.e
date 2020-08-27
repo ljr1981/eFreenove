@@ -59,6 +59,7 @@ feature -- Header Code
 
 	lcdSendCommand (a_handle: like lcd_handle; a_command: CHARACTER)
 			-- extern void lcdSendCommand (const int fd, unsigned char command) ;
+			-- We need use cases in order to understand this in context.
 		external
 			"C inline use <lcd.h>"
 		alias
@@ -77,6 +78,7 @@ feature -- Header Code
 	lcdCharDef (a_handle: like lcd_handle; a_index: INTEGER; a_char: CHARACTER)
 			-- CharDef at `a_index' using `a_char'?
 			-- extern void lcdCharDef     (const int fd, int index, unsigned char data [8]) ;
+			-- We need use cases in order to understand this in context.
 		external
 			"C inline use <lcd.h>"
 		alias
@@ -165,6 +167,15 @@ feature -- Header Code
 			--	const int rs, const int strb,
 			--	const int d0, const int d1, const int d2, const int d3, const int d4,
 			--	const int d5, const int d6, const int d7) ;
+		note
+			design: "[
+				a_rows		How many rows in the display (e.g. 1-2-4)
+				a_cols		How many columns in the display (e.g. 16)
+				a_bits		How many bits per character (e.g. 4-bits)
+				a_rs		Instruction/Data Register Selection 
+				a_strobe	Enable Signal
+				a_d0-7		8 data pins (this example only uses first 4)
+				]"
 		external
 			"C inline use <lcd.h>"
 		alias
@@ -183,10 +194,15 @@ feature -- Constants
 	D5_const: INTEGER once Result := BASE_const + 5 end
 	D6_const: INTEGER once Result := BASE_const + 6 end
 	D7_const: INTEGER once Result := BASE_const + 7 end
+		-- The "BASE_const +" is 64 + n, where 64 is
+		-- binary 0b01000000, which is a shift. The Freenove
+		-- documentation does not appear to explain the
+		-- reason this 64-bit set to 1 is required.
 
 feature -- Access
 
 	lcd_handle: INTEGER
+		-- A handle (pointer) to the LCD device on the I2C bus.
 
 feature -- Measurement
 

@@ -137,9 +137,13 @@ feature {NONE} -- Implementation: Settings
 			digitalWrite (a_trigPin, LOW_const) -- then lower it.
 
 			l_pingTime := pulseIn (a_echoPin, HIGH_const, a_timeout) -- Read pulse-time of `a_echoPin'
-			l_distance := l_pingTime * 340.0 / 2.0 / 10000.0 -- Calculate distance with sound speed 340m/s
+			l_distance := l_pingTime * Speed_of_sound_in_meters_per_second / Magic_2 / Magic_10K -- Calculate distance with sound speed 340m/s
 
 			Result := l_distance
 		end
+
+	Speed_of_sound_in_meters_per_second: REAL = 340.0
+	Magic_2: REAL = 2.0 		-- None of the example C code explains why we divide by 2.0
+	Magic_10K: REAL = 10000.0 	-- and then by 10K. Go figure?
 
 end

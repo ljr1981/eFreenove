@@ -41,6 +41,7 @@ feature -- Status report
 
 	read_motion_buffer: TUPLE [ax, ay, az, gx, gy, gz: INTEGER_16]
 			-- Read buffered acceleration and attitude on XYZ-axis data.
+			-- where a=acceleration and g=gyro (attitude).
 		note
 			purpose: "[
 				Accelleration values in ax, ay, az
@@ -125,6 +126,15 @@ feature {NONE} -- Implementation: Basic Operations
 
 	accelgyro_getmotion6 (a_object: POINTER; ax, ay, az, gx, gy, gz: TYPED_POINTER [INTEGER_16])
 			-- Get six motion measurements (XYZ for accelleration and attitude).
+		note
+			design: "[
+				The arguments are passed as "pass-through's"--that is--the arg is
+				passed as a pointer to a 16-bit integer object, which the C++ receives
+				and then loads (sets) with the value read from the device (MPU6050).
+				The caller of this routine can then access whatever INTEGER_16 objects
+				it used to send in as arguments to know what the device values are
+				after this call is complete.
+				]"
 		external
 			"C++ inline use <MPU6050.h>"
 		alias

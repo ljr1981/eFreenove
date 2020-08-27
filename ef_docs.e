@@ -33,5 +33,14 @@ note
 		API (EVOK in particular). The TCP is also of interest for a similar
 		reason (i.e. we have an Eiffel-based TCP library as well).
 		]"
+	unipi_1_20200827: "[
+		WiringPi is deprecated as of 2019 and will someday break. The EVOK SDK
+		(see above) is based on PIGPIO (i.e. pi-GPIO or "pig-pio"), which
+		appears to be lower-level that WiringPi. So, ultimately, the code
+		must rest on PIGPIO, but for now, WiringPi will do for experimentation.
+		It might even be useful for production work as long as we're fixed
+		on RPi4B or older equipment. The danger will be upgrades to the RPi
+		hardware that create breaking changes to the deprecated WiringPi library.
+		]"
 
 end

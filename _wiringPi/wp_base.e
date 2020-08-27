@@ -141,6 +141,20 @@ feature -- WiringPi Wraps
 						in brightness as it follows the power-output of the
 						PWM duty-cycle.
 				]"
+			define_soft_PWM: "[
+				This is when software is controlling the Pulse-width Modulation.
+				There is a hardware version on the RPi4B, but only certain pins
+				are operated in this way.
+				
+				The danger of software-driven PWM is that the software might get
+				interupted, throwing off the Pulse-width due to timing issues.
+				This will generally mean tht the pulse (turning on of the pin) lasts
+				too long, which then allows the power to build beyond what the
+				application needs, which could cause undesireable effects.
+				
+				Therefore--a hardware driven PWM is preferred when timing of the
+				pulse is critical. Otherwise, software-based PWM is sufficient.
+				]"
 		require
 			valid_setup: is_wiringpi_initialized
 		external

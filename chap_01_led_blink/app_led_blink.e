@@ -35,12 +35,12 @@ feature {NONE} -- Initialization
 			loop
 				print (ic.item.out + " on ")
 
-				wpi.digitalWrite (led_pin_0_const, HIGH_const)
+				wpi.digitalWrite (led_pin_0_const, HIGH_const)	-- HIGH = ON
 
 				l_env.sleep (One_second_const)
 				print ("off ")
 
-				wpi.digitalWrite (LED_pin_0_const, LOW_const)
+				wpi.digitalWrite (LED_pin_0_const, LOW_const)	-- LOW = OFF
 
 				l_env.sleep (One_second_const)
 				print ("%N")

@@ -1,7 +1,8 @@
 note
 	description: "Access to PIGPIO I2C Related Functions"
 	warnings: "[
-		Ensure that your project includes the libpgpio Eiffel library.
+		Ensure that your project includes the epigpio Eiffel library.
+		This was created by WrapC with some minor hand-modified code.
 		]"
 	design: "[
 		The features of this class wrap some (and someday all) of the

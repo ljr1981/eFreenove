@@ -189,13 +189,13 @@ note
 		
 		Such is the case here!
 		
-		Examine the `make' feature below and compare it to the
+		Examine the `make' feature and compare it to the
 		'main' feature of the StepperMotor.c file. The two look
 		deceptively similar, but they are not.
 		
 		1. Where is the call to wiringPiSetup();
 		2. Where is the for-loop setting the pinMode?
-		3. Where is the while-loop that run endlessly?
+		3. Where is the while-loop that runs endlessly?
 		
 		Let's handle these in turn.
 		

@@ -1,5 +1,11 @@
 note
 	description: "WP_PCF8574 Wrapper of pcf8574.h"
+	what_is: "[
+		A PCF8574 is the controller being used in conjunction with the
+		LCD1602A Liquid Crystal Display unit. The software is talking
+		to the device being controlled through and by the PCF8574
+		(or PCF8574A).
+		]"
 
 deferred class
 	WP_PCF8574
@@ -14,7 +20,6 @@ feature -- Initialization
 	setup
 			-- Perform setup of PCF8574 Controller.
 		do
-			print ("pcf8574Setup (" + BASE_const.out + ", " + pcf8574_address_const.out + ")%N")
 			pcf8574Setup (BASE_const, pcf8574_address_const)
 		end
 
@@ -91,7 +96,13 @@ feature -- Constants
 				which states that the PCF8574A address will show up at 0x37
 				]"
 		once
-			Result := 0x27 -- Alternate = 0x3F
+			Result := 0x27
+		end
+
+	pcf8574A_address_const: INTEGER
+			-- See above
+		once
+			Result := 0x3F
 		end
 
 feature -- Access

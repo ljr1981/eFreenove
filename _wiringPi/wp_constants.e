@@ -20,16 +20,18 @@ feature -- Common
 feature -- Blink specific
 
 	LED_pin_0_const: INTEGER = 0
-			-- Access to GPIO pin 0 (WiringPi) 11 (Physical) 17 (BCM).
+			-- Access to GPIO pin 0 (WiringPi) 11 (Physical) 17 (BCM or BroadCom).
 			-- For Blink tutorial project only.
 
 feature -- Button & LED specific
 
 	buttonPin_const: INTEGER = 1
+			-- button Pin based on Freenove chapter task.
 
 feature -- Pin Modes
 
 	pin_modes: ARRAY [INTEGER]
+			-- List of `pin_modes' defined in WiringPi.
 		once
 			Result := <<
 						pin_mode_INPUT_const,
@@ -78,7 +80,6 @@ feature -- // Pull up/down/none
 	PUD_OFF_const: INTEGER = 0
 	PUD_DOWN_const: INTEGER = 1
 	PUD_UP_const: INTEGER = 2
-
 
 feature -- Constants
 

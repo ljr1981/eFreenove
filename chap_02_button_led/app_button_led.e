@@ -7,6 +7,19 @@ note
 		
 		Compare to ... in the C_code folder of Freenove.
 		]"
+	real_design: "[
+		The Freenove kit code wants to just turn the LED on or off
+		by way of the button press. In this case, I took very creative
+		license and have attempted to make the code able to recognize
+		Morse Code (dits-and-dahs) and decipher those into A-Z characters.
+		
+		The goal was to build a button where one could tap out messages
+		in Morse Code, while blinking the LED light with the button presses.
+		
+		I did not precisely get to the goal of perfect Morse Code recognition,
+		but it works well enough to show that the LED does blink on and off
+		based on the button press.
+		]"
 	ca_ignore: "CA023" 	-- Unneded parenthese - it turns out these parentheses are needed!
 						-- attached (create {TIME}.make_now) as al_now (see `turn_on_off')
 
@@ -32,10 +45,10 @@ feature {NONE} -- Initialization
 			print ("%N")
 			print ("%N")
 
-			wpi.pinMode (LED_pin_0_const, pin_mode_OUTPUT_const)			--; //Set ledPin to output
-			wpi.pinMode (buttonPin_const, pin_mode_INPUT_const)			--; //Set buttonPin to input
+			wpi.pinMode (LED_pin_0_const, pin_mode_OUTPUT_const)	-- Set ledPin to output
+			wpi.pinMode (buttonPin_const, pin_mode_INPUT_const)		-- Set buttonPin to input
 
-			wpi.pullUpDnControl (buttonPin_const, PUD_UP_const)	--; //pull up to HIGH level
+			wpi.pullUpDnControl (buttonPin_const, PUD_UP_const)		-- Pull up to HIGH level
 
 			from
 				dit_dah_queue.wipe_out
@@ -50,13 +63,27 @@ feature {NONE} -- Initialization
 feature {NONE} -- Implementation
 
 	has_button_cycled_on_to_off: BOOLEAN
-			--
+			-- A button cycle is from OFF -> ON -> OFF
+			-- for some duration of time.
 		do
 			Result := not is_button_down and then has_duration
 		end
 
 	turn_on_off
 			-- Turn LED on or off depending on button press.
+		note
+			design: "[
+				Determine if the button has cycled OFF -> ON -> OFF.
+				If so, how long did the ON part of the cycle last (duration)?
+				
+				Once we know how long the duration was, we determine if that
+				duration is a dit (. or dot) or a dah (- or dash).
+				
+				The set_dit (or set_dah) records the dit/dah in a list.
+				When the users pauses long enough between button presses
+				the program looks that the list and tries to determine
+				what character (A-Z) is represented.
+				]"
 		do
 			if is_turn_LED_on then
 				turn_LED_on
@@ -75,9 +102,9 @@ feature {NONE} -- Implementation
 
 			if attached last_up_alt as al_up and then
 				attached (create {TIME}.make_now) as al_now and then
-				last_duration_nano_seconds (al_up, al_now) > (dah * 4)
-			then
-				last_up_alt := Void
+				last_duration_nano_seconds (al_up, al_now) > (dah * 4) 	-- greater than 4 x dah means we are
+			then														-- ready to print the char and look for
+				last_up_alt := Void										-- our next char or click (exit or end)
 				print (" " + translate_dit_dah_queue_to_letter.out + "%N")
 				dit_dah_queue.wipe_out
 			end
@@ -147,7 +174,7 @@ feature {NONE} -- Button + LED Coordination
 			not_down: not attached last_down
 			not_up: not attached last_up
 		do
-			wpi.digitalWrite (LED_pin_0_const, HIGH_const)
+			wpi.digitalWrite (LED_pin_0_const, HIGH_const) -- button down means LED HIGH (ON)
 			create last_down.make_now
 			last_up := Void
 		ensure
@@ -161,7 +188,7 @@ feature {NONE} -- Button + LED Coordination
 			down: attached last_down
 			not_up: not attached last_up
 		do
-			wpi.digitalWrite (LED_pin_0_const, LOW_const)
+			wpi.digitalWrite (LED_pin_0_const, LOW_const) -- button up means LED LOW (OFF)
 			create last_up.make_now
 			create last_up_alt.make_now
 		ensure
