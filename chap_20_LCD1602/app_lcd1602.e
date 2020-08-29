@@ -38,15 +38,12 @@ feature {NONE} -- Initialization
 
 			l_lcd.setup
 			across 0 |..| 7 as ic loop
-				print ("l_wpi.pinMode (" + (l_lcd.BASE_const + ic.item).out + ", " + HIGH_const.out + ")%N")
 				Wpi.pinmode (l_lcd.base_const + ic.item, pin_mode_OUTPUT_const)
 			end
 			Wpi.digitalWrite (l_lcd.LED_const, HIGH_const) -- turn on LED on LCD backlight
 
-			print ("l_wpi.digitalWrite (" + l_lcd.RW_const.out + ", " + LOW_const.out + ")%N")
 			Wpi.digitalWrite (l_lcd.RW_const, LOW_const)
 
-			print ("l_handle := l_lcd.lcdInit (2, 16, 4, " + l_lcd.RS_const.out + ", " + l_lcd.EN_const.out + ", " + l_lcd.D4_const.out + ", " + l_lcd.D5_const.out + ", " + l_lcd.D6_const.out + ", " + l_lcd.D7_const.out + ", 0, 0, 0, 0)%N")
 			l_handle := l_lcd.lcdInit (2, 16, 4, l_lcd.RS_const, l_lcd.EN_const, l_lcd.D4_const, l_lcd.D5_const,l_lcd.D6_const, l_lcd.D7_const, 0, 0, 0, 0)
 
 			if l_handle = -1 then
