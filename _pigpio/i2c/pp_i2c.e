@@ -8,6 +8,7 @@ note
 		The features of this class wrap some (and someday all) of the
 		I2C-related features of the libpgpio library class
 		]"
+	EIS: "name=C_API", "src=http://abyz.me.uk/rpi/pigpio/pdif2.html"
 
 class
 	PP_I2C
